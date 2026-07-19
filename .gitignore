@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Astro build and generated files
+dist/
+.astro/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Local QA artifacts
+/mobile-fullpage.png
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

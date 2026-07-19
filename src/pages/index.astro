@@ -1,0 +1,336 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import TechConstellation from '../components/TechConstellation';
+import GitHubActivity from '../components/GitHubActivity';
+import { Image } from 'astro:assets';
+import lucasProfile from '../assets/lucas-profile.webp';
+import lucasProfile2 from '../assets/lucas-profile2.webp';
+import pillket1 from '../assets/pillket/pillket1.webp';
+import vericerbiz1 from '../assets/vericerbiz/image.webp';
+import efod1 from '../assets/efod/efod1.webp';
+
+const principles = [
+  ['01', 'Definir el alcance', 'Flujos, usuarios, reglas de negocio y prioridades antes de comenzar a desarrollar.'],
+  ['02', 'Construir por capas', 'Interfaz, API y datos separados para mantener el código claro y fácil de extender.'],
+  ['03', 'Probar e iterar', 'Validar responsive, accesibilidad, rendimiento y casos críticos antes de publicar.'],
+];
+const experienceEntries = [
+  {
+    period: '2025 — Actualidad',
+    company: 'Vericerbiz S.A.C.',
+    role: 'Full Stack Developer · Socio cofundador',
+    points: ['Desarrollo de la plataforma B2B/B2C con React, TypeScript y Laravel.', 'Implementación de marketplace, feed corporativo, validación empresarial y mensajería en tiempo real.'],
+    current: true,
+  },
+  {
+    period: '2024 — 2025',
+    company: 'Digital Oasis',
+    location: 'Huánuco, Perú',
+    role: 'Desarrollador Web Frontend Junior',
+    points: ['Participación en el desarrollo de sistemas ERP y e-commerce utilizando React y Laravel.', 'Creación de interfaces adaptativas y optimización de la experiencia de usuario con Tailwind CSS.', 'Soporte técnico: diagnóstico de laptops, reparación de hardware y mantenimiento de software.'],
+  },
+  {
+    period: '2025',
+    company: 'WCP Technology Solutions',
+    role: 'Soporte técnico',
+    points: ['Diagnóstico y reparación de laptops y computadoras.', 'Soporte de software e implementación de sistemas de gestión.'],
+  },
+  {
+    period: '2022 — 2023',
+    company: 'Grupo Rino E.I.R.L.',
+    location: 'Huánuco, Perú',
+    role: 'Programador Junior',
+    points: ['Participación en el desarrollo de sistemas ERP y e-commerce utilizando React y Laravel.', 'Creación de interfaces adaptativas y optimización de la experiencia de usuario con Tailwind CSS.', 'Soporte técnico: diagnóstico de laptops, reparación de hardware y mantenimiento de software.'],
+  },
+];
+
+const educationEntries = [
+  {
+    period: '2021 — 2024',
+    institution: 'SENATI · Instituto de Educación Superior Tecnológico Privado',
+    title: 'Profesional Técnico en Ingeniería de Software con Inteligencia Artificial',
+    detail: 'Título profesional técnico.',
+  },
+  {
+    period: '2018 — 2021',
+    institution: 'ICPNA · Instituto Cultural Peruano Norteamericano',
+    title: 'Inglés avanzado · Nivel B2',
+    detail: 'Diploma de nivel avanzado tras tres años de formación y nivel B2 acreditado mediante TOEFL ITP.',
+  },
+];
+const certifications = [
+  ['IDAT', 'Especialización en Desarrollo Frontend'],
+  ['Pachaqtec', 'Especialización en Desarrollo de Aplicaciones Móviles'],
+];
+const trainingAreas = ['Desarrollo de software e IA', 'Estructuras de datos', 'Aplicaciones web y móviles'];
+const milestones = [
+  ['2022', 'Comienzo freelance', 'Primeros productos web de punta a punta.'],
+  ['2023', 'Más allá del frontend', 'APIs, autenticación y datos se integran al proceso.'],
+  ['2024', 'Vericerbiz', 'Un ecosistema B2B/B2C de confianza, comercio y comunidad.'],
+  ['2025', 'Pillket', 'Una plataforma real para eventos y entradas en Perú.'],
+  ['Ahora', 'Productos que escalan', 'Diseño, ingeniería y producto en una misma mesa.'],
+];
+---
+<BaseLayout title="Lucas Melgar — Full Stack Developer" description="Portfolio de Lucas Melgar, desarrollador Full Stack especializado en React, Laravel y productos digitales escalables.">
+  <Header />
+  <main id="contenido">
+    <section id="inicio" class="relative flex min-h-screen items-center overflow-hidden pt-28">
+      <div class="page-shell relative grid items-center gap-12 pb-16 lg:grid-cols-[1.15fr_.85fr]">
+        <div class="reveal relative z-10">
+          <div class="mb-6 flex items-center gap-3">
+            <span class="eyebrow rounded-full border border-ink/30 bg-white/70 px-3 py-1.5">Full Stack Developer</span>
+            <span class="hand -rotate-3 text-xl text-coral">Tingo María, Perú</span>
+          </div>
+          <h1 class="display max-w-4xl text-[clamp(4.2rem,10vw,8.7rem)]">Lucas <span class="marker always">Melgar.</span></h1>
+          <p class="mt-8 max-w-2xl text-lg leading-relaxed text-ink-soft md:text-xl">Desarrollo aplicaciones web completas con <strong class="text-ink">React, Laravel y Tailwind CSS</strong>: interfaces, APIs, bases de datos y paneles administrativos.</p>
+          <div class="mt-9 flex flex-wrap items-center gap-4">
+            <a href="#proyectos" class="focus-ring rough-border hover-lift bg-ink px-6 py-3.5 font-bold text-white">Abrir mis proyectos <span aria-hidden="true">↓</span></a>
+            <a href="mailto:lucasmelgar123@gmail.com" class="focus-ring nav-link font-bold">Escríbeme <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-ink-soft"><span>● Disponible para proyectos freelance</span><span>Desde 2022</span></div>
+        </div>
+        <div class="reveal delay-2 relative mx-auto w-full max-w-[470px] pb-16 lg:mt-10">
+          <figure class="relative z-10 mx-auto mt-16 w-full max-w-[410px]">
+            <figcaption class="paper-card rough-border tape relative min-h-76 rotate-[1deg] px-6 pb-8 pt-25 text-left md:min-h-72 md:px-8 md:pb-8 md:pt-9">
+              <div class="absolute -top-18 right-4 z-10 md:-right-5 md:-top-16">
+                <div class="absolute -inset-2 rotate-3 rounded-full border-2 border-dashed border-coral/75" aria-hidden="true"></div>
+                <div class="relative size-38 overflow-hidden rounded-full border-[6px] border-white bg-paper-deep shadow-[5px_7px_0_rgba(23,63,95,.16)] md:size-43">
+                  <Image
+                    src={lucasProfile}
+                    alt="Retrato de Lucas Melgar, desarrollador Full Stack"
+                    widths={[480, 720, 960]}
+                    sizes="(max-width: 768px) 210px, 230px"
+                    loading="eager"
+                    fetchpriority="high"
+                    class="h-full w-full origin-[50%_18%] scale-[1.35] object-cover"
+                  />
+                </div>
+                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 -rotate-2 whitespace-nowrap rounded-full border-2 border-ink bg-lime px-3 py-1 text-[11px] font-bold shadow-[3px_3px_0_rgba(23,63,95,.13)]">Hola, soy Lucas 👋</span>
+              </div>
+              <div class="absolute -top-14 left-5 flex items-end gap-1 text-coral md:-left-5 md:-top-12" aria-hidden="true">
+                <span class="hand -rotate-6 text-xl">ese soy yo</span>
+                <svg width="76" height="48" viewBox="0 0 76 48" fill="none"><path d="M3 39C18 14 39 8 67 13M58 5l10 8-11 8" stroke="#ef6f61" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="md:max-w-[215px]">
+                <p class="hand text-2xl text-coral">trabajo full stack</p>
+                <p class="display mt-3 text-3xl leading-[1.08]">Frontend, backend y base de datos.</p>
+              </div>
+              <div class="mt-6 flex flex-wrap justify-center gap-2 border-t border-dashed border-ink/25 pt-5"><span class="rounded-full bg-lime px-3 py-1 text-xs font-bold">Astro</span><span class="rounded-full bg-sky px-3 py-1 text-xs font-bold">React</span><span class="rounded-full bg-coral/25 px-3 py-1 text-xs font-bold">Laravel</span></div>
+            </figcaption>
+          </figure>
+          <div class="postit absolute -bottom-1 -left-1 z-20 w-42 p-4 md:-left-8"><p class="hand text-xl font-bold">Ahora integrando flujo de trabajo con<br/>GitHub Actions</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-mi" class="section-pad">
+      <div class="page-shell grid items-center gap-14 lg:grid-cols-[.85fr_1.15fr]">
+        <div class="reveal relative mx-auto w-full max-w-[470px] pb-14 lg:mx-0">
+          <figure class="relative ml-auto mt-14 w-full max-w-[410px]">
+            <figcaption class="paper-card rough-border tape relative min-h-72 -rotate-[1deg] px-6 pb-8 pt-28 md:min-h-70 md:px-8 md:pb-8 md:pt-9">
+              <div class="absolute -top-16 left-4 z-10 md:-left-5">
+                <div class="absolute -inset-2 -rotate-3 rounded-full border-2 border-dashed border-coral/75" aria-hidden="true"></div>
+                <div class="relative size-38 overflow-hidden rounded-full border-[6px] border-white bg-paper-deep shadow-[5px_7px_0_rgba(23,63,95,.16)] md:size-42">
+                  <Image src={lucasProfile2} alt="Lucas Melgar trabajando en su computadora" widths={[304, 336, 504]} sizes="(min-width: 768px) 168px, 152px" loading="lazy" class="h-full w-full object-cover object-[42%_48%]" />
+                </div>
+                <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 rotate-2 whitespace-nowrap rounded-full border-2 border-ink bg-lime px-3 py-1 text-[11px] font-bold shadow-[3px_3px_0_rgba(23,63,95,.13)]">en modo código</span>
+              </div>
+              <div class="absolute -top-13 right-4 flex items-end gap-1 text-coral md:-right-4" aria-hidden="true">
+                <svg class="-scale-x-100" width="70" height="44" viewBox="0 0 76 48" fill="none"><path d="M3 39C18 14 39 8 67 13M58 5l10 8-11 8" stroke="#ef6f61" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="hand rotate-3 text-xl">así trabajo</span>
+              </div>
+              <div class="ml-auto md:max-w-[215px]">
+                <p class="hand text-2xl text-coral">de idea a producto</p>
+                <p class="display mt-3 text-3xl leading-[1.08]">Diseño, código y decisiones conectadas.</p>
+              </div>
+              <div class="mt-6 flex flex-wrap justify-center gap-2 border-t border-dashed border-ink/25 pt-5"><span class="rounded-full bg-lime px-3 py-1 text-xs font-bold">UX/UI</span><span class="rounded-full bg-sky px-3 py-1 text-xs font-bold">Frontend</span><span class="rounded-full bg-coral/25 px-3 py-1 text-xs font-bold">Backend</span></div>
+            </figcaption>
+          </figure>
+          <div class="postit absolute -bottom-1 right-0 z-20 w-42 p-4 md:-right-4"><p class="hand text-xl font-bold">Primero entender.<br/>Luego construir.</p></div>
+        </div>
+
+        <div class="reveal delay-1">
+          <p class="eyebrow text-coral">02 — Sobre mí</p>
+          <h2 class="display mt-4 text-5xl md:text-7xl">Desarrollo de principio a fin.</h2>
+          <p class="mt-7 text-xl leading-relaxed md:text-2xl">Soy desarrollador Full Stack freelance y profesor de inglés. Luego de concluir mi formación académica en SENATI, me dedico a crear soluciones web integrales.</p>
+          <p class="mt-6 leading-relaxed text-ink-soft">Trabajo principalmente con React, TypeScript, Laravel y MySQL. Me enfoco en interfaces claras, código mantenible, rendimiento y sistemas preparados para crecer y siempre estoy abierto a aprender nuevas tecnologías.</p>
+          <div class="mt-9 grid grid-cols-3 gap-3 border-t border-dashed border-ink/30 pt-7"><div><b class="display text-3xl md:text-4xl">4+</b><span class="mt-1 block text-xs text-ink-soft">años creando</span></div><div><b class="display text-3xl md:text-4xl">3</b><span class="mt-1 block text-xs text-ink-soft">proyectos destacados</span></div><div><b class="display text-3xl md:text-4xl">360°</b><span class="mt-1 block text-xs text-ink-soft">visión full stack</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section-pad bg-paper-deep/55">
+      <div class="page-shell">
+        <div class="reveal mb-12 max-w-3xl"><p class="eyebrow text-coral">03 — Experiencia y estudios</p><h2 class="display mt-4 text-5xl md:text-7xl">Formación y trabajo.</h2></div>
+        <div class="grid gap-10 lg:grid-cols-[1.15fr_.85fr]">
+          <div class="reveal">
+            <div class="mb-5 flex items-center gap-3"><span class="flex size-9 items-center justify-center rounded-full border-2 border-ink bg-coral font-bold text-white">01</span><h3 class="display text-3xl md:text-4xl">Experiencia</h3></div>
+            <div class="space-y-4">
+              {experienceEntries.map((entry) => (
+                <article class="paper-card rough-border hover-lift p-6 md:p-7">
+                  <div class="flex flex-wrap items-start justify-between gap-3">
+                    <div><p class="eyebrow text-coral">{entry.company}</p><h4 class="mt-2 text-xl font-bold">{entry.role}</h4>{entry.location && <p class="mt-1 text-xs font-semibold text-ink-soft">{entry.location}</p>}</div>
+                    <span class={`rounded-full px-3 py-1.5 text-xs font-bold ${entry.current ? 'bg-lime' : 'bg-sky'}`}>{entry.period}</span>
+                  </div>
+                  <ul class="mt-5 space-y-2 text-sm leading-relaxed text-ink-soft">
+                    {entry.points.map((point) => <li class="flex gap-3"><span class="text-coral" aria-hidden="true">↳</span><span>{point}</span></li>)}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div class="reveal delay-1">
+            <div class="mb-5 flex items-center gap-3"><span class="flex size-9 items-center justify-center rounded-full border-2 border-ink bg-lime font-bold">02</span><h3 class="display text-3xl md:text-4xl">Estudios y certificaciones</h3></div>
+            <div class="paper-card rough-border tape p-6 md:p-8">
+              {educationEntries.map((entry, index) => (
+                <article class={index ? 'mt-7 border-t border-dashed border-ink/30 pt-7' : ''}>
+                  <p class="hand text-2xl text-coral">{entry.period}</p>
+                  <p class="eyebrow mt-3 text-ink-soft">{entry.institution}</p>
+                  <h4 class="mt-2 text-xl font-bold leading-snug">{entry.title}</h4>
+                  <p class="mt-3 text-sm leading-relaxed text-ink-soft">{entry.detail}</p>
+                </article>
+              ))}
+              <div class="mt-7 border-t-2 border-dashed border-ink/25 pt-7">
+                <p class="hand text-2xl text-coral">Especializaciones</p>
+                <ul class="mt-4 space-y-4">
+                  {certifications.map(([institution, title]) => (
+                    <li class="flex gap-3">
+                      <span class="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border-2 border-ink bg-lime text-xs font-black" aria-hidden="true">✓</span>
+                      <div><p class="font-bold leading-snug">{title}</p><p class="mt-1 text-xs font-semibold uppercase tracking-wider text-ink-soft">{institution}</p></div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="mt-7 border-t border-dashed border-ink/25 pt-6">
+                <p class="eyebrow text-ink-soft">Áreas de formación</p>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {trainingAreas.map((area, index) => <span class={`rounded-full px-3 py-1.5 text-xs font-bold ${index === 0 ? 'bg-lime' : index === 1 ? 'bg-sky' : 'bg-coral/20'}`}>{area}</span>)}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologias" class="section-pad">
+      <div class="page-shell">
+        <div class="reveal mb-12 max-w-3xl"><p class="eyebrow text-coral">04 — Tecnologías</p><h2 class="display mt-4 text-5xl md:text-7xl">Stack principal.</h2><p class="mt-5 max-w-xl text-ink-soft">Tecnologías que uso para construir frontend, backend y datos.</p></div>
+        <div class="reveal delay-1"><TechConstellation client:load /></div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section-pad overflow-hidden">
+      <div class="page-shell">
+        <div class="reveal mb-12 grid gap-6 lg:grid-cols-[1fr_.7fr] lg:items-end"><div><p class="eyebrow text-coral">05 — Proyectos</p><h2 class="display mt-4 text-6xl md:text-8xl">Esto es lo que hago.</h2></div><p class="max-w-md leading-relaxed text-ink-soft lg:pb-2">Resumen de los productos. Cada caso de estudio contiene el proceso, la arquitectura y las capturas completas.</p></div>
+
+        <div class="divide-y-2 divide-dashed divide-ink/20 border-y-2 border-dashed border-ink/20">
+          <article class="reveal grid gap-6 py-9 md:grid-cols-[180px_1fr_auto] md:items-center">
+            <a href="/proyectos/pillket" class="focus-ring group overflow-hidden rounded-[14px_9px_17px_11px] border-2 border-ink bg-white p-1 shadow-[4px_5px_0_rgba(23,63,95,.12)]" aria-label="Ver caso de estudio de Pillket">
+              <Image src={pillket1} alt="Vista principal de Pillket" widths={[360, 540]} sizes="180px" loading="lazy" class="aspect-[16/10] w-full rounded-[10px_6px_12px_7px] object-cover object-top transition group-hover:scale-[1.02]" />
+            </a>
+            <div><p class="hand text-2xl text-coral">Plataforma de eventos</p><h3 class="display mt-1 text-4xl">Pillket</h3><p class="mt-3 max-w-2xl text-ink-soft">Venta de entradas, pagos, códigos QR, liquidaciones y administración para organizadores.</p><div class="mt-4 flex flex-wrap gap-2">{['React', 'Laravel', 'MySQL', 'Tailwind CSS'].map((tech) => <span class="rounded-full bg-paper-deep px-3 py-1 text-xs font-bold">{tech}</span>)}</div></div>
+            <a href="/proyectos/pillket" class="focus-ring rough-border inline-flex items-center gap-2 border-2 border-ink px-5 py-3 font-bold transition hover:bg-ink hover:text-white">Ver proyecto <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="reveal delay-1 grid gap-6 py-9 md:grid-cols-[180px_1fr_auto] md:items-center">
+            <a href="/proyectos/vericerbiz" class="focus-ring group overflow-hidden rounded-[14px_9px_17px_11px] border-2 border-ink bg-white p-1 shadow-[4px_5px_0_rgba(23,63,95,.12)]" aria-label="Ver caso de estudio de Vericerbiz">
+              <Image src={vericerbiz1} alt="Vista principal de Vericerbiz" widths={[360, 540]} sizes="180px" loading="lazy" class="aspect-[16/10] w-full rounded-[10px_6px_12px_7px] object-cover object-top transition group-hover:scale-[1.02]" />
+            </a>
+            <div><p class="hand text-2xl text-coral">Ecosistema B2B/B2C</p><h3 class="display mt-1 text-4xl">Vericerbiz</h3><p class="mt-3 max-w-2xl text-ink-soft">Red corporativa, marketplace, validación empresarial y mensajería en tiempo real.</p><div class="mt-4 flex flex-wrap gap-2">{['React 19', 'TypeScript', 'Laravel', 'Redis', 'AWS'].map((tech) => <span class="rounded-full bg-paper-deep px-3 py-1 text-xs font-bold">{tech}</span>)}</div></div>
+            <a href="/proyectos/vericerbiz" class="focus-ring rough-border inline-flex items-center gap-2 border-2 border-ink px-5 py-3 font-bold transition hover:bg-ink hover:text-white">Ver proyecto <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="reveal delay-2 grid gap-6 py-9 md:grid-cols-[180px_1fr_auto] md:items-center">
+            <a href="/proyectos/efod" class="focus-ring group overflow-hidden rounded-[14px_9px_17px_11px] border-2 border-ink bg-white p-1 shadow-[4px_5px_0_rgba(23,63,95,.12)]" aria-label="Ver caso de estudio de EFOD">
+              <Image src={efod1} alt="Vista principal del sitio web de EFOD" widths={[360, 540]} sizes="180px" loading="lazy" class="aspect-[16/10] w-full rounded-[10px_6px_12px_7px] object-cover object-top transition group-hover:scale-[1.02]" />
+            </a>
+            <div><p class="hand text-2xl text-coral">Plataforma institucional bilingüe</p><h3 class="display mt-1 text-4xl">EFOD</h3><p class="mt-3 max-w-2xl text-ink-soft">Sitio interactivo para comunicar 27 años de proyectos sociales, presencia territorial y donaciones en la Amazonía peruana.</p><div class="mt-4 flex flex-wrap gap-2">{['Astro 6', 'TypeScript', 'Tailwind CSS', 'AWS'].map((tech) => <span class="rounded-full bg-paper-deep px-3 py-1 text-xs font-bold">{tech}</span>)}</div></div>
+            <a href="/proyectos/efod" class="focus-ring rough-border inline-flex items-center gap-2 border-2 border-ink px-5 py-3 font-bold transition hover:bg-ink hover:text-white">Ver proyecto <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="github" class="section-pad bg-paper-deep/35">
+      <div class="page-shell">
+        <div class="reveal grid gap-6 lg:grid-cols-[1fr_.7fr] lg:items-end">
+          <div><p class="eyebrow text-coral">06 — Código abierto</p><h2 class="display mt-4 text-5xl md:text-7xl">Actividad en GitHub.</h2></div>
+          <p class="max-w-md leading-relaxed text-ink-soft lg:pb-2">Contribuciones públicas obtenidas desde mi perfil. Selecciona un año para explorar la actividad.</p>
+        </div>
+        <div class="reveal delay-1"><GitHubActivity client:visible /></div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section-pad bg-paper-deep/60">
+      <div class="page-shell"><div class="reveal mb-12"><p class="eyebrow text-coral">07 — Trayectoria</p><h2 class="display mt-4 text-5xl md:text-7xl">2022 — Actualidad.</h2></div>
+        <div class="relative grid gap-0 md:grid-cols-5">
+          <div class="absolute left-3 top-0 h-full w-px bg-ink/25 md:left-0 md:right-0 md:top-4 md:h-px md:w-full"></div>
+          {milestones.map(([year,title,text], index) => <div class={`reveal delay-${Math.min(index,3)} relative pb-9 pl-10 md:pb-0 md:pl-0 md:pr-5`}><i class="absolute left-[7px] top-1 size-3 rounded-full border-2 border-ink bg-lime md:left-0 md:top-[10px]"></i><p class="hand text-2xl text-coral md:mt-9">{year}</p><h3 class="mt-2 font-bold">{title}</h3><p class="mt-2 text-sm leading-relaxed text-ink-soft">{text}</p></div>)}
+        </div>
+      </div>
+    </section>
+
+    <section id="habilidades" class="section-pad">
+      <div class="page-shell grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div class="reveal"><p class="eyebrow text-coral">08 — Áreas de trabajo</p><h2 class="display mt-4 text-5xl md:text-7xl">Qué puedo aportar.</h2></div><div class="reveal delay-1 flex flex-wrap content-start gap-3">{['Arquitectura frontend', 'Diseño de interfaces', 'APIs REST', 'Modelado de datos', 'Rendimiento web', 'Accesibilidad', 'SEO técnico', 'Sistemas de diseño', 'Autenticación y roles', 'Integración frontend/backend'].map((skill, i) => <span class={`hover-lift rough-border border-2 border-ink px-5 py-3 font-bold ${i % 4 === 0 ? 'bg-lime' : i % 4 === 1 ? 'bg-sky' : 'bg-white'}`}>{skill}</span>)}</div></div>
+    </section>
+
+    <section id="filosofia" class="section-pad">
+      <div class="page-shell"><div class="reveal mx-auto mb-12 max-w-2xl text-center"><p class="eyebrow text-coral">09 — Proceso</p><h2 class="display mt-4 text-5xl md:text-7xl">Cómo trabajo.</h2></div><div class="grid gap-5 md:grid-cols-3">{principles.map(([number,title,text], i) => <article class={`reveal delay-${i+1} paper-card rough-border hover-lift p-7`}><span class="hand text-3xl text-coral">{number}</span><h3 class="display mt-8 text-3xl">{title}</h3><p class="mt-4 leading-relaxed text-ink-soft">{text}</p></article>)}</div></div>
+    </section>
+
+    <section id="contacto" class="section-pad pb-10">
+      <div class="page-shell">
+        <div class="reveal paper-card rough-border overflow-hidden">
+          <div class="relative border-b-2 border-dashed border-ink/20 px-6 py-12 text-center md:px-12 md:py-16">
+            <span class="absolute left-1/2 top-0 h-7 w-24 -translate-x-1/2 -translate-y-1/2 -rotate-2 bg-lime/65" aria-hidden="true"></span>
+            <p class="eyebrow text-coral">10 — CV disponible</p>
+            <h2 class="display mx-auto mt-4 max-w-3xl text-5xl md:text-7xl">Mi experiencia, en una página.</h2>
+            <p class="mx-auto mt-5 max-w-xl leading-relaxed text-ink-soft">Experiencia laboral, educación y stack tecnológico. Directo y fácil de revisar.</p>
+            <a href="/cv/lucas-melgar-cv.pdf" download="Lucas-Melgar-CV.pdf" class="focus-ring rough-border hover-lift mt-8 inline-flex items-center gap-2 border-2 border-ink bg-lime px-6 py-3.5 font-bold text-ink">
+              Descargar CV <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+
+          <div class="grid gap-10 px-6 py-10 md:px-10 md:py-12 lg:grid-cols-[.65fr_1.35fr]">
+            <div>
+              <p class="hand text-3xl text-coral">Hablemos</p>
+              <h3 class="display mt-3 text-4xl md:text-5xl">¿Qué estás construyendo?</h3>
+              <p class="mt-5 max-w-sm leading-relaxed text-ink-soft">Cuéntame sobre tu producto, el problema que quieres resolver o la mejora que necesitas.</p>
+              <div class="mt-8 space-y-2 text-sm">
+                <a href="mailto:lucasmelgar123@gmail.com" class="focus-ring nav-link inline-block font-bold">lucasmelgar123@gmail.com</a>
+                <p class="text-ink-soft">Tingo María, Perú · Trabajo remoto</p>
+              </div>
+            </div>
+
+            <form action="https://formsubmit.co/lucasmelgar123@gmail.com" method="POST" accept-charset="UTF-8" class="grid gap-5 sm:grid-cols-2">
+              <input type="hidden" name="_subject" value="Nuevo mensaje desde el portfolio" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+              <label class="grid gap-2 text-sm font-bold">
+                Nombre
+                <input type="text" name="nombre" autocomplete="name" required minlength="2" maxlength="80" placeholder="Tu nombre" class="focus-ring rounded-[15px_10px_17px_11px] border-2 border-ink/20 bg-white/75 px-4 py-3.5 font-normal outline-none transition placeholder:text-ink-soft/55 hover:border-ink/40 focus:border-ink" />
+              </label>
+              <label class="grid gap-2 text-sm font-bold">
+                Correo
+                <input type="email" name="email" autocomplete="email" required maxlength="120" placeholder="tu@email.com" class="focus-ring rounded-[15px_10px_17px_11px] border-2 border-ink/20 bg-white/75 px-4 py-3.5 font-normal outline-none transition placeholder:text-ink-soft/55 hover:border-ink/40 focus:border-ink" />
+              </label>
+              <label class="grid gap-2 text-sm font-bold sm:col-span-2">
+                Mensaje
+                <textarea name="mensaje" required minlength="10" maxlength="1500" rows="6" placeholder="Cuéntame brevemente sobre tu proyecto..." class="focus-ring resize-y rounded-[15px_10px_17px_11px] border-2 border-ink/20 bg-white/75 px-4 py-3.5 font-normal outline-none transition placeholder:text-ink-soft/55 hover:border-ink/40 focus:border-ink"></textarea>
+              </label>
+              <div class="flex flex-col gap-4 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+                <p class="text-xs leading-relaxed text-ink-soft">Responderé directamente al correo que indiques.</p>
+                <button type="submit" class="focus-ring rough-border hover-lift inline-flex items-center justify-center gap-2 bg-ink px-7 py-3.5 font-bold text-white transition hover:bg-coral">
+                  Enviar mensaje <span aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="page-shell flex flex-col gap-4 py-8 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} Lucas Melgar · Full Stack Developer</p><div class="flex gap-5"><a class="nav-link focus-ring" href="#inicio">Volver arriba ↑</a><a class="nav-link focus-ring" href="mailto:lucasmelgar123@gmail.com">Correo</a></div></footer>
+</BaseLayout>

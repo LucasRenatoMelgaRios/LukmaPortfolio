@@ -1,0 +1,30 @@
+---
+interface Props { project: 'pillket' | 'vericerbiz'; }
+const { project } = Astro.props;
+---
+{project === 'pillket' ? (
+  <div class="relative overflow-hidden rounded-[16px] border-2 border-ink bg-[#f6f2e8] p-2 shadow-[5px_6px_0_rgba(23,63,95,.18)]" role="img" aria-label="Vista conceptual del dashboard y sistema de tickets de Pillket">
+    <div class="mb-2 flex items-center justify-between rounded-xl bg-ink px-3 py-2 text-white">
+      <span class="font-bold tracking-tight">pillket<span class="text-coral">.</span></span>
+      <div class="flex gap-1.5"><i class="size-2 rounded-full bg-coral"></i><i class="size-2 rounded-full bg-lime"></i></div>
+    </div>
+    <div class="grid grid-cols-[.65fr_1.35fr] gap-2">
+      <div class="rounded-xl bg-[#e9dfcd] p-3">
+        <p class="mb-5 text-[8px] font-bold uppercase tracking-wider">Panel organizador</p>
+        <div class="space-y-2 text-[7px]"><p class="rounded bg-white p-2">◉ Eventos</p><p class="p-2">⌁ Ventas</p><p class="p-2">▦ Escáner QR</p></div>
+      </div>
+      <div class="space-y-2">
+        <div class="grid grid-cols-3 gap-2"><div class="rounded-lg bg-lime p-2"><b class="block text-sm">1.2k</b><span class="text-[7px]">entradas</span></div><div class="rounded-lg bg-sky p-2"><b class="block text-sm">89%</b><span class="text-[7px]">vendido</span></div><div class="rounded-lg bg-coral/70 p-2"><b class="block text-sm">24</b><span class="text-[7px]">hoy</span></div></div>
+        <div class="relative h-28 rounded-xl bg-white p-3 dot-grid"><span class="text-[8px] font-bold">Ventas de la semana</span><div class="absolute inset-x-3 bottom-4 flex items-end gap-2">{[38,62,47,76,53,84,95].map((h) => <i class="flex-1 rounded-t bg-ink/75" style={`height:${h * .55}px`}></i>)}</div></div>
+      </div>
+    </div>
+  </div>
+) : (
+  <div class="relative overflow-hidden rounded-[16px] border-2 border-ink bg-[#eff4f2] p-2 shadow-[5px_6px_0_rgba(23,63,95,.18)]" role="img" aria-label="Vista conceptual del feed social de Vericerbiz">
+    <div class="mb-2 flex items-center justify-between rounded-xl bg-white px-3 py-2"><b class="text-sm">vericer<span class="text-coral">biz</span></b><span class="rounded-full bg-lime px-2 py-1 text-[7px] font-bold">Crear publicación</span></div>
+    <div class="grid grid-cols-[.55fr_1.45fr] gap-2">
+      <div class="space-y-2 rounded-xl bg-ink p-3 text-white"><div class="size-8 rounded-full bg-sky"></div><b class="block text-[8px]">Tu comunidad</b><p class="text-[7px] opacity-70">Inicio<br/>Explorar<br/>Mensajes<br/>Guardados</p></div>
+      <div class="space-y-2"><div class="rounded-xl bg-white p-3"><div class="mb-2 flex items-center gap-2"><i class="size-6 rounded-full bg-coral/70"></i><div><b class="block text-[8px]">Ana Torres</b><span class="text-[6px]">Hace 12 min</span></div></div><div class="h-18 rounded-lg bg-[linear-gradient(135deg,#b8dcf0,#d8ed72)]"></div><p class="mt-2 text-[7px]">Compartiendo ideas que conectan personas.</p></div><div class="flex gap-2"><span class="rounded-full bg-white px-3 py-1 text-[7px]">♡ 248</span><span class="rounded-full bg-white px-3 py-1 text-[7px]">◯ 36</span></div></div>
+    </div>
+  </div>
+)}

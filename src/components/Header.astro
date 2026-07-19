@@ -1,0 +1,17 @@
+---
+const links = [
+  ['Sobre mí', '/#sobre-mi'], ['Experiencia', '/#experiencia'], ['Proyectos', '/#proyectos'], ['Contacto', '/#contacto']
+];
+---
+<header class="fixed inset-x-0 top-0 z-50 px-3 pt-3">
+  <nav class="page-shell flex min-h-15 items-center justify-between rounded-[18px_12px_20px_11px] border border-ink/20 bg-paper/90 px-4 shadow-[4px_5px_0_rgba(23,63,95,.1)] backdrop-blur-sm" aria-label="Navegación principal">
+    <a href="/" class="focus-ring flex items-center gap-2 font-bold" aria-label="Ir al inicio">
+      <span class="flex size-9 -rotate-3 items-center justify-center rounded-full border-2 border-ink bg-lime font-serif text-lg">LM</span>
+      <span class="hidden sm:inline">Lucas Melgar</span>
+    </a>
+    <div class="hidden items-center gap-6 md:flex">
+      {links.map(([label, href]) => <a class="nav-link focus-ring text-sm font-semibold" href={href}>{label}</a>)}
+    </div>
+    <a href="mailto:lucasmelgar123@gmail.com" class="focus-ring rough-border bg-ink px-4 py-2 text-sm font-bold text-white transition hover:bg-coral">Hablemos <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>

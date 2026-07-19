@@ -1,0 +1,297 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ProjectGallery from '../../components/ProjectGallery.astro';
+import TechPill from '../../components/TechPill.astro';
+import pillket1 from '../../assets/pillket/pillket1.webp';
+import pillket2 from '../../assets/pillket/pillket2.webp';
+import pillket3 from '../../assets/pillket/pillket3.webp';
+import pillket4 from '../../assets/pillket/pillket4.webp';
+import vericerbiz1 from '../../assets/vericerbiz/image.webp';
+import vericerbiz2 from '../../assets/vericerbiz/image2.webp';
+import vericerbiz3 from '../../assets/vericerbiz/image3.webp';
+import vericerbiz4 from '../../assets/vericerbiz/image4.webp';
+import efod1 from '../../assets/efod/efod1.webp';
+import efod2 from '../../assets/efod/efod2.webp';
+import efod3 from '../../assets/efod/efod3.webp';
+import efod4 from '../../assets/efod/efod4.webp';
+
+export function getStaticPaths() {
+  const projects = {
+    vericerbiz: {
+      name: 'Vericerbiz',
+      type: 'Plataforma B2B y B2C',
+      summary: 'Vericerbiz combina una red social corporativa, un marketplace de comercio electrónico y un sistema de validación empresarial gestionado por Cámaras de Comercio. Todo centralizado para fomentar transacciones seguras y conexiones comerciales reales.',
+      tech: ['TypeScript', 'React', 'Vite', 'Tailwind CSS', 'Motion', 'Zustand', 'TanStack Query', 'Laravel', 'PHP', 'MySQL', 'Redis', 'WebSockets', 'AWS'],
+      website: null,
+      repository: 'Privado',
+      cover: vericerbiz1,
+      coverAlt: 'Página principal de Vericerbiz enfocada en compras seguras',
+      problemIntro: 'Las empresas en crecimiento tienen dificultades para establecer confianza verificable con nuevos clientes y proveedores en línea y muchas caen en la informalidad. Las redes sociales tradicionales como facebook marketplace, no están enfocadas en la validación comercial B2B y los marketplaces comunes carecen del componente social necesario para construir relaciones a largo plazo. Con el fin de incentivar la formalización y la confianza, Vericerbiz propone un entorno donde la identidad social de una empresa está respaldada por una Cámara de Comercio.',
+      problemPoints: [
+        'Desconfianza en las transacciones digitales por falta de respaldo oficial.',
+        'Desconexión entre la identidad social de la marca y sus operaciones comerciales.',
+        'Dependencia de varias plataformas: chat, ventas, comunidad y validación.',
+      ],
+      solutionIntro: 'Vericerbiz propone un entorno unificado donde la identidad y las operaciones de una empresa están respaldadas por una Cámara de Comercio.',
+      solutionPoints: [
+        'Feed social interactivo para generar comunidad y conexiones B2B.',
+        'Marketplace con compras, pedidos y centro de resolución de disputas mediante el uso de nuestra moneda virtual.',
+        'Verificación de RUC y documentos legales delegada a Cámaras de Comercio.',
+        'Programas de fidelización, misiones y moneda virtual mediante VeriTokens.',
+      ],
+      howIntro: 'El producto utiliza una arquitectura desacoplada compuesta por una SPA y una API REST. Los procesos administrativos y la experiencia pública se mantienen separados según el rol del usuario.',
+      howPoints: [
+        'Panel administrativo para SuperAdmin y Cámaras de Comercio.',
+        'Interfaz pública y empresarial con red social, marketplace, chat y billetera.',
+        'Procesamiento asíncrono de chats, compras, reacciones y notificaciones.',
+        'WebSockets para mensajes y actualizaciones instantáneas.',
+        'Caché de consultas para acelerar feeds y listados de gran volumen.',
+      ],
+      stackGroups: [
+        ['Arquitectura', ['SPA', 'API REST']],
+        ['Frontend', ['React 19', 'TypeScript', 'Vite']],
+        ['Interfaz', ['Tailwind CSS', 'Motion', 'Lucide React']],
+        ['Estado', ['Zustand', 'TanStack Query']],
+        ['Backend', ['Laravel', 'PHP', 'MySQL']],
+        ['Tiempo real', ['Laravel Reverb', 'Laravel Echo', 'WebSockets']],
+        ['Infraestructura', ['Redis', 'AWS S3', 'CloudFront']],
+        ['Autenticación', ['Laravel Sanctum', 'Socialite OAuth']],
+      ],
+      decisions: [
+        ['Estado separado', 'Zustand gestiona la interfaz y React Query el estado del servidor. Esto reduce código repetitivo y permite actualizaciones optimistas.'],
+        ['Arquitectura por eventos', 'Las tareas pesadas se envían a colas de Redis para no bloquear las respuestas de la API.'],
+        ['WebSockets nativos', 'Laravel Reverb mantiene sincronizados el chat, las notificaciones y las interacciones del feed sin long-polling.'],
+        ['Caché selectiva', 'Las vistas costosas se almacenan por etiquetas y se invalidan únicamente cuando cambia la información relacionada.'],
+        ['Medios mediante CDN', 'Los documentos, imágenes y videos se almacenan en S3 y se distribuyen con CloudFront.'],
+      ],
+      challenges: [
+        'Sincronizar eventos WebSocket con la caché del cliente sin provocar renderizados innecesarios.',
+        'Diseñar una base de datos relacional de más de 70 tablas para billeteras, disputas, pedidos y roles dinámicos.',
+        'Configurar CORS, CSP, cookies SameSite y OAuth entre entornos locales y de producción.',
+        'Mantener el rendimiento en catálogos, feeds infinitos y pantallas con microanimaciones.',
+      ],
+      gallery: [
+        { src: vericerbiz1, label: 'Confianza para comprar', alt: 'Página principal de Vericerbiz enfocada en compras seguras' },
+        { src: vericerbiz2, label: 'Marketplace de productos', alt: 'Catálogo de productos y categorías de Vericerbiz' },
+        { src: vericerbiz3, label: 'Perfil de empresa', alt: 'Perfil empresarial verificado dentro de Vericerbiz' },
+        { src: vericerbiz4, label: 'Mensajería por pedidos', alt: 'Sistema de mensajes y conversaciones de pedidos de Vericerbiz' },
+      ],
+      accent: 'coral' as const,
+      next: { href: '/proyectos/efod', name: 'EFOD' },
+    },
+    efod: {
+      name: 'EFOD',
+      type: 'Plataforma institucional bilingüe',
+      summary: 'EFOD es una plataforma web interactiva y bilingüe que visibiliza 27 años de trabajo de una ONG en la Amazonía peruana. Centraliza proyectos de desarrollo, presencia territorial y donaciones para cooperantes internacionales.',
+      tech: ['Astro 6', 'TypeScript', 'Tailwind CSS', 'Motion', 'Vanilla JS', 'HTML5', 'CSS3', 'AWS'],
+      website: null,
+      repository: 'Privado',
+      cover: efod1,
+      coverAlt: 'Página principal de EFOD sobre su trabajo en la Amazonía peruana',
+      problemIntro: 'Las organizaciones que trabajan en zonas rurales de difícil acceso suelen tener poca visibilidad ante cooperantes internacionales. Sus sitios estáticos y reportes PDF no comunican de forma clara la escala territorial ni conectan las donaciones con resultados concretos.',
+      problemPoints: [
+        'Desconfianza por falta de métricas visibles y rendición de cuentas accesible.',
+        'Dificultad para comprender la distribución geográfica de comunidades y proyectos.',
+        'Experiencias móviles deficientes provocadas por sitios pesados y documentos difíciles de consultar.',
+      ],
+      solutionIntro: 'EFOD presenta el trabajo institucional mediante una experiencia rápida, bilingüe y centrada en la transparencia territorial.',
+      solutionPoints: [
+        'Mapa SVG interactivo que conecta regiones, ciudades y proyectos de intervención.',
+        'Selector de donaciones con PayPal y equivalencias de impacto medible.',
+        'Generación estática con Astro para mejorar SEO y tiempos de carga.',
+        'Microinteracciones, transiciones y navegación adaptadas a escritorio y móvil.',
+      ],
+      howIntro: 'El sitio utiliza la arquitectura de islas de Astro y generación estática. Solo las interacciones necesarias envían JavaScript al navegador, reduciendo el peso de la página.',
+      howPoints: [
+        'Contenido generado como HTML estático mediante Astro SSG.',
+        'Cambio instantáneo entre español e inglés sin dependencias adicionales.',
+        'Mapa territorial sincronizado con ciudades y regiones vectoriales.',
+        'Scroll con inercia mediante requestAnimationFrame, desactivado en dispositivos táctiles.',
+        'Imágenes y video distribuidos mediante AWS S3 y CloudFront.',
+      ],
+      stackGroups: [
+        ['Arquitectura', ['SSG', 'Astro i18n']],
+        ['Frontend', ['Astro 6', 'TypeScript', 'Vanilla JS']],
+        ['Interfaz', ['Tailwind CSS', 'HTML5', 'CSS3']],
+        ['Animaciones', ['Motion', 'CSS Transitions']],
+        ['Geografía', ['SVG interactivo', 'JavaScript DOM']],
+        ['Donaciones', ['PayPal']],
+        ['Infraestructura', ['AWS S3', 'CloudFront']],
+      ],
+      decisions: [
+        ['Astro y generación estática', 'Se eligió Astro en lugar de una SPA completa para priorizar SEO, HTML inicial y carga rápida con JavaScript mínimo.'],
+        ['Bilingüismo sin dependencias', 'Las traducciones se obtienen desde atributos de datos y se almacenan en memoria para cambiar de idioma sin solicitudes adicionales.'],
+        ['Mapa SVG coordinado', 'Las regiones y marcadores comparten identificadores con los elementos de texto para sincronizar estados hover sin renderizados costosos.'],
+        ['Precarga de contenido crítico', 'Las imágenes superiores se precargan y el navegador establece conexión anticipada con CloudFront para reducir el LCP.'],
+        ['Scroll adaptativo', 'El efecto de inercia solo se ejecuta en escritorio; móviles y usuarios con movimiento reducido conservan el comportamiento nativo.'],
+      ],
+      challenges: [
+        'Servir un video HD en el Hero sin perjudicar batería, datos móviles ni rendimiento.',
+        'Sincronizar más de 20 regiones y marcadores SVG con elementos externos del contenido.',
+        'Implementar scroll suave sin interferir con dispositivos táctiles o accesibilidad.',
+        'Mantener una experiencia bilingüe instantánea con una cantidad mínima de JavaScript.',
+      ],
+      gallery: [
+        { src: efod1, label: 'Portada institucional', alt: 'Hero de EFOD sobre desarrollo humano en la Amazonía peruana' },
+        { src: efod2, label: 'Transparencia y trayectoria', alt: 'Sección de EFOD sobre trayectoria, rendición de cuentas y equipo local' },
+        { src: efod3, label: 'Alcance territorial', alt: 'Sección visual de EFOD sobre cuatro cuencas amazónicas intervenidas' },
+        { src: efod4, label: 'Mapa interactivo', alt: 'Mapa de presencia territorial de EFOD en Huánuco y San Martín' },
+      ],
+      accent: 'lime' as const,
+      next: { href: '/proyectos/pillket', name: 'Pillket' },
+    },
+    pillket: {
+      name: 'Pillket',
+      type: 'E-ticketing y control de accesos',
+      summary: 'Pillket es una plataforma integral de gestión de eventos, venta de entradas y control de accesos en tiempo real. Combina un marketplace para compradores, un panel para organizadores y una app móvil nativa con validación offline para el personal de puerta.',
+      tech: ['TypeScript', 'React 19', 'Vite', 'Tailwind CSS', 'React Native', 'Expo', 'Laravel 12', 'PHP', 'MySQL', 'Redis', 'Culqi'],
+      website: 'https://pillket.com',
+      repository: 'Privado',
+      cover: pillket1,
+      coverAlt: 'Landing de Pillket para crear y vender entradas de eventos',
+      problemIntro: 'Los organizadores y productores independientes pierden rentabilidad por las altas comisiones de las ticketeras tradicionales, que suelen absorber entre el 10% y 15% de cada venta. También deben enfrentar entradas clonadas, reembolsos manuales y accesos lentos en recintos con mala conectividad.',
+      problemPoints: [
+        'Pérdida de márgenes de ganancia por tarifas y comisiones elevadas.',
+        'Fraude y duplicidad de entradas mediante códigos QR estáticos o falsificados.',
+        'Reembolsos manuales y burocráticos ante cancelaciones o postergaciones.',
+        'Cuellos de botella al validar entradas en recintos masivos sin internet estable.',
+      ],
+      solutionIntro: 'Pillket ofrece un entorno unificado de emisión, control y reembolso de boletos con una estructura de costos transparente.',
+      solutionPoints: [
+        'Comisiones competitivas, incluyendo campañas promocionales con 0% de comisión.',
+        'Marketplace con Culqi, autenticación 3D Secure 2.0 y reembolsos automatizados.',
+        'Boletos firmados criptográficamente para impedir falsificaciones y reutilización.',
+        'App móvil nativa con validación offline, sincronización local y feedback háptico.',
+        'Cancelaciones y reembolsos masivos procesados mediante colas en segundo plano.',
+      ],
+      howIntro: 'El producto utiliza una arquitectura desacoplada y multidispositivo. La SPA web, la API y la aplicación móvil comparten las reglas de negocio, pero mantienen responsabilidades independientes.',
+      howPoints: [
+        'SPA web con marketplace público y panel administrativo para organizadores.',
+        'API REST con Laravel 12 y Redis para pagos, tickets y procesos asíncronos.',
+        'App móvil para iOS y Android construida con Expo y React Native.',
+        'Base de entradas sincronizada localmente para escanear con o sin conexión.',
+        'Control financiero con ventas, retenciones, comisiones y liquidaciones.',
+      ],
+      stackGroups: [
+        ['Arquitectura', ['SPA', 'API REST', 'App móvil nativa']],
+        ['Frontend web', ['React 19', 'TypeScript', 'Vite 8']],
+        ['Interfaz web', ['Tailwind CSS', 'React Router 7']],
+        ['Aplicación móvil', ['React Native', 'Expo', 'React Native Reanimated']],
+        ['Backend', ['Laravel 12', 'PHP 8.2+', 'MySQL']],
+        ['Pagos', ['Culqi', '3D Secure', 'Reembolsos']],
+        ['Infraestructura', ['Redis', 'Supervisor', 'AWS S3']],
+        ['Autenticación', ['Laravel Sanctum', 'Socialite OAuth']],
+      ],
+      decisions: [
+        ['Firma criptográfica QR', 'Cada entrada se firma con HMAC-SHA256 utilizando un UUID v4 y una clave privada. El código no puede predecirse ni falsificarse.'],
+        ['Validación offline descentralizada', 'La app descarga las entradas al dispositivo y aplica la regla del primer escaneo. Los estados se sincronizan automáticamente cuando vuelve la conexión.'],
+        ['Procesamiento asíncrono', 'Redis y Supervisor ejecutan reembolsos masivos, reintentos de Culqi y correos transaccionales sin bloquear la API.'],
+        ['Interfaz móvil optimizada', 'Los eventos muestran estados dinámicos y acciones contextuales mediante componentes preparados para gestos y escaneo continuo.'],
+        ['Gestión de riesgo financiero', 'Un libro de balance registra retenciones, comisiones y débitos por cancelaciones para proteger los fondos de compradores y plataforma.'],
+      ],
+      challenges: [
+        'Resolver conflictos cuando varios porteros escanean entradas sin conexión de forma simultánea.',
+        'Mantener idempotencia en pagos, cancelaciones y emisión de tickets bajo alta concurrencia.',
+        'Gestionar fallas bancarias, tiempos de espera y métodos manuales dentro de los reembolsos de Culqi.',
+        'Optimizar la cámara de Expo y la respuesta visual del escáner durante ingresos de alto tráfico.',
+      ],
+      gallery: [
+        { src: pillket1, label: 'Landing para organizadores', alt: 'Landing de Pillket para crear y vender entradas de eventos' },
+        { src: pillket2, label: 'Detalle y compra de entradas', alt: 'Página de un evento en Pillket con selección de entradas' },
+        { src: pillket3, label: 'Detalle de liquidación', alt: 'Modal de Pillket con el cálculo y recorrido de una liquidación' },
+        { src: pillket4, label: 'Panel de pagos', alt: 'Panel de organizador de Pillket con resumen de pagos y transferencias' },
+      ],
+      accent: 'lime' as const,
+      next: { href: '/proyectos/vericerbiz', name: 'Vericerbiz' },
+    },
+  };
+
+  return Object.entries(projects).map(([slug, project]) => ({ params: { slug }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const sections = [
+  ['problema', 'Problema'], ['solucion', 'Solución'], ['funcionamiento', 'Cómo funciona'], ['stack', 'Stack tecnológico'], ['decisiones', 'Decisiones técnicas'], ['desafios', 'Desafíos'], ['capturas', 'Capturas'],
+];
+---
+<BaseLayout title={`${project.name} — Caso de estudio · Lucas Melgar`} description={project.summary}>
+  <Header />
+  <main id="contenido" class="pt-28">
+    <article>
+      <header class="section-pad pb-16">
+        <div class="page-shell">
+          <a href="/#proyectos" class="focus-ring nav-link inline-flex items-center gap-2 text-sm font-bold">← Volver a proyectos</a>
+          <div class="mt-12 grid gap-12 lg:grid-cols-[1fr_.8fr] lg:items-center">
+            <div class="reveal">
+              <p class="eyebrow text-coral">Caso de estudio · {project.type}</p>
+              <h1 class="display mt-4 text-6xl md:text-8xl">{project.name}</h1>
+              <p class="mt-7 max-w-3xl text-lg leading-relaxed text-ink-soft">{project.summary}</p>
+              <div class="mt-7 flex flex-wrap gap-2" aria-label="Tecnologías utilizadas">{project.tech.map((tech) => <TechPill name={tech} />)}</div>
+              <div class="mt-8 flex flex-wrap gap-4">
+                {project.website ? <a href={project.website} class="focus-ring rough-border bg-ink px-5 py-3 font-bold text-white">Sitio web ↗</a> : <span class="rough-border bg-ink/8 px-5 py-3 font-bold text-ink/50">Sitio web · enlace pendiente</span>}
+                <span class="rough-border border-2 border-ink/20 px-5 py-3 font-bold text-ink-soft">Repositorio · {project.repository}</span>
+              </div>
+            </div>
+            <figure class="reveal delay-1 paper-card rough-border tape overflow-hidden p-2">
+              <Image src={project.cover} alt={project.coverAlt} widths={[600, 900, 1200]} sizes="(max-width: 1024px) 92vw, 500px" loading="eager" class="aspect-[16/10] w-full rounded-[13px_9px_16px_10px] object-cover object-top" />
+            </figure>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-shell grid gap-12 border-t-2 border-dashed border-ink/20 py-16 lg:grid-cols-[200px_minmax(0,1fr)]">
+        <aside class="hidden lg:block">
+          <nav class="sticky top-28" aria-label="Contenido del proyecto">
+            <p class="eyebrow mb-4 text-coral">En esta página</p>
+            <ul class="space-y-3 text-sm">{sections.map(([href, label]) => <li><a class="focus-ring nav-link text-ink-soft hover:text-ink" href={`#${href}`}>{label}</a></li>)}</ul>
+          </nav>
+        </aside>
+
+        <div class="min-w-0 max-w-4xl space-y-20">
+          <section id="problema" class="scroll-mt-28 reveal">
+            <p class="eyebrow text-coral">01 — Problema</p><h2 class="display mt-3 text-4xl md:text-5xl">El contexto.</h2>
+            <p class="mt-6 text-lg leading-relaxed text-ink-soft">{project.problemIntro}</p>
+            <ul class="mt-6 space-y-3">{project.problemPoints.map((point) => <li class="flex gap-3"><span class="font-bold text-coral">—</span><span>{point}</span></li>)}</ul>
+          </section>
+
+          <section id="solucion" class="scroll-mt-28 reveal">
+            <p class="eyebrow text-coral">02 — Solución</p><h2 class="display mt-3 text-4xl md:text-5xl">La propuesta.</h2>
+            <p class="mt-6 text-lg leading-relaxed text-ink-soft">{project.solutionIntro}</p>
+            <ul class="mt-6 grid gap-3 sm:grid-cols-2">{project.solutionPoints.map((point) => <li class="rough-border bg-paper-deep px-4 py-4 font-semibold">↳ {point}</li>)}</ul>
+          </section>
+
+          <section id="funcionamiento" class="scroll-mt-28 reveal">
+            <p class="eyebrow text-coral">03 — Cómo funciona</p><h2 class="display mt-3 text-4xl md:text-5xl">Flujo y arquitectura.</h2>
+            <p class="mt-6 text-lg leading-relaxed text-ink-soft">{project.howIntro}</p>
+            <ol class="mt-7 space-y-4">{project.howPoints.map((point, index) => <li class="flex gap-4"><span class="hand text-2xl font-bold text-coral">0{index + 1}</span><span class="pt-1 leading-relaxed">{point}</span></li>)}</ol>
+          </section>
+
+          <section id="stack" class="scroll-mt-28 reveal">
+            <p class="eyebrow text-coral">04 — Stack tecnológico</p><h2 class="display mt-3 text-4xl md:text-5xl">Tecnologías y responsabilidades.</h2>
+            <dl class="mt-7 divide-y divide-dashed divide-ink/25 border-y border-dashed border-ink/25">{project.stackGroups.map(([label, technologies]) => <div class="grid gap-3 py-4 sm:grid-cols-[150px_1fr] sm:items-center"><dt class="font-bold">{label}</dt><dd class="flex flex-wrap gap-2">{technologies.map((technology) => <TechPill name={technology} />)}</dd></div>)}</dl>
+          </section>
+
+          <section id="decisiones" class="scroll-mt-28 reveal">
+            <p class="eyebrow text-coral">05 — Decisiones técnicas</p><h2 class="display mt-3 text-4xl md:text-5xl">Por qué está construido así.</h2>
+            <div class="mt-7 space-y-6">{project.decisions.map(([title, text], index) => <article class="grid gap-3 sm:grid-cols-[42px_1fr]"><span class="hand text-3xl text-coral">0{index + 1}</span><div><h3 class="text-lg font-bold">{title}</h3><p class="mt-2 leading-relaxed text-ink-soft">{text}</p></div></article>)}</div>
+          </section>
+
+          <section id="desafios" class="scroll-mt-28 reveal">
+            <p class="eyebrow text-coral">06 — Desafíos y aprendizajes</p><h2 class="display mt-3 text-4xl md:text-5xl">Problemas técnicos resueltos.</h2>
+            <ul class="mt-7 space-y-4">{project.challenges.map((challenge) => <li class="paper-card rough-border flex gap-3 p-5"><span class="font-bold text-coral">✓</span><span class="leading-relaxed">{challenge}</span></li>)}</ul>
+          </section>
+
+          <section id="capturas" class="scroll-mt-28 reveal">
+            <ProjectGallery project={project.name} items={project.gallery} accent={project.accent} />
+          </section>
+        </div>
+      </div>
+
+      <footer class="pb-20">
+        <div class="page-shell flex flex-col gap-4 border-t-2 border-dashed border-ink/20 pt-8 sm:flex-row sm:items-center sm:justify-between"><a href="/#proyectos" class="focus-ring font-bold">← Todos los proyectos</a><a href={project.next.href} class="focus-ring rough-border bg-ink px-5 py-3 font-bold text-white">Siguiente: {project.next.name} →</a></div>
+      </footer>
+    </article>
+  </main>
+</BaseLayout>

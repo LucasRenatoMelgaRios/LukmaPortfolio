@@ -1,0 +1,62 @@
+---
+interface Props { name: string; }
+const { name } = Astro.props;
+
+const icons: Record<string, string> = {
+  'Astro 6': 'https://svgl.app/library/astro-icon-light.svg',
+  'React': 'https://svgl.app/library/react_dark.svg',
+  'React 19': 'https://svgl.app/library/react_dark.svg',
+  'React Native': 'https://svgl.app/library/react_dark.svg',
+  'React Native Reanimated': 'https://svgl.app/library/react_dark.svg',
+  'TypeScript': 'https://svgl.app/library/typescript.svg',
+  'Vite': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg',
+  'Vite 8': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg',
+  'Tailwind CSS': 'https://svgl.app/library/tailwindcss.svg',
+  'Motion': 'https://svgl.app/library/motion.svg',
+  'Zustand': 'https://go-skill-icons.vercel.app/api/icons?i=zustand',
+  'TanStack Query': 'https://svgl.app/library/tanstack.svg',
+  'Laravel': 'https://svgl.app/library/laravel.svg',
+  'Laravel 12': 'https://svgl.app/library/laravel.svg',
+  'PHP': 'https://svgl.app/library/php.svg',
+  'PHP 8.2+': 'https://svgl.app/library/php.svg',
+  'MySQL': 'https://svgl.app/library/mysql-icon-light.svg',
+  'Redis': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',
+  'WebSockets': 'https://svgl.app/library/socketio-icon-light.svg',
+  'AWS': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+  'SPA': 'https://api.iconify.design/lucide:monitor-smartphone.svg?color=%23173f5f',
+  'API REST': 'https://api.iconify.design/lucide:braces.svg?color=%23173f5f',
+  'Lucide React': 'https://api.iconify.design/lucide:feather.svg?color=%23ef6f61',
+  'Laravel Reverb': 'https://svgl.app/library/laravel.svg',
+  'Laravel Echo': 'https://svgl.app/library/laravel.svg',
+  'AWS S3': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+  'CloudFront': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
+  'Laravel Sanctum': 'https://svgl.app/library/laravel.svg',
+  'Socialite OAuth': 'https://api.iconify.design/lucide:user-round-check.svg?color=%23173f5f',
+  'Diseño responsive': 'https://api.iconify.design/lucide:panels-top-left.svg?color=%23173f5f',
+  'Pagos': 'https://api.iconify.design/lucide:credit-card.svg?color=%23173f5f',
+  'Tickets QR': 'https://api.iconify.design/lucide:qr-code.svg?color=%23173f5f',
+  'Liquidaciones': 'https://api.iconify.design/lucide:landmark.svg?color=%23173f5f',
+  'App móvil nativa': 'https://api.iconify.design/lucide:smartphone.svg?color=%23173f5f',
+  'React Router 7': 'https://api.iconify.design/simple-icons:reactrouter.svg?color=%23ca4245',
+  'Expo': 'https://api.iconify.design/simple-icons:expo.svg?color=%23173f5f',
+  'Culqi': 'https://api.iconify.design/lucide:credit-card.svg?color=%23173f5f',
+  '3D Secure': 'https://api.iconify.design/lucide:shield-check.svg?color=%23173f5f',
+  'Reembolsos': 'https://api.iconify.design/lucide:badge-dollar-sign.svg?color=%23173f5f',
+  'Supervisor': 'https://api.iconify.design/lucide:settings.svg?color=%23173f5f',
+  'Vanilla JS': 'https://svgl.app/library/javascript.svg',
+  'HTML5': 'https://svgl.app/library/html5.svg',
+  'CSS3': 'https://svgl.app/library/css_old.svg',
+  'SSG': 'https://api.iconify.design/lucide:file-code-2.svg?color=%23173f5f',
+  'Astro i18n': 'https://svgl.app/library/astro-icon-light.svg',
+  'CSS Transitions': 'https://api.iconify.design/lucide:sparkles.svg?color=%23ef6f61',
+  'SVG interactivo': 'https://api.iconify.design/lucide:map.svg?color=%23173f5f',
+  'JavaScript DOM': 'https://svgl.app/library/javascript.svg',
+  'PayPal': 'https://api.iconify.design/logos:paypal.svg',
+};
+
+const icon = icons[name];
+---
+<span class="inline-flex items-center gap-2 rounded-full border border-ink/25 bg-white px-3 py-1.5 text-xs font-bold shadow-[2px_2px_0_rgba(23,63,95,.06)]">
+  {icon ? <img src={icon} alt="" width="17" height="17" loading="lazy" decoding="async" class="size-4 object-contain" aria-hidden="true" /> : <span class="flex size-4 items-center justify-center rounded bg-paper-deep text-[9px]" aria-hidden="true">&lt;/&gt;</span>}
+  {name}
+</span>
