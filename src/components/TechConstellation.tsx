@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 const technologies = [
   { name: 'Astro', icon: 'https://svgl.app/library/astro-icon-light.svg' },
   { name: 'React', icon: 'https://svgl.app/library/react_dark.svg' },
@@ -15,16 +17,25 @@ const technologies = [
 ];
 
 export default function TechConstellation() {
+  const [language, setLanguage] = useState<'es' | 'en'>('es');
+
+  useEffect(() => {
+    const syncLanguage = () => setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
+    syncLanguage();
+    window.addEventListener('portfolio-language-change', syncLanguage);
+    return () => window.removeEventListener('portfolio-language-change', syncLanguage);
+  }, []);
+
   return (
     <div className="paper-card rough-border tape p-5 md:p-8">
       <div className="mb-7 flex flex-wrap items-end justify-between gap-3 border-b border-dashed border-ink/25 pb-5">
         <div>
-          <p className="hand text-2xl text-coral">herramientas de trabajo</p>
-          <h3 className="display mt-1 text-3xl md:text-4xl">Habilidades técnicas</h3>
+          <p className="hand text-2xl text-coral">{language === 'en' ? 'tools of the trade' : 'herramientas de trabajo'}</p>
+          <h3 className="display mt-1 text-3xl md:text-4xl">{language === 'en' ? 'Technical skills' : 'Habilidades técnicas'}</h3>
         </div>
-        <span className="rounded-full bg-lime px-3 py-1 text-xs font-bold">13 tecnologías</span>
+        <span className="rounded-full bg-lime px-3 py-1 text-xs font-bold">13 {language === 'en' ? 'technologies' : 'tecnologías'}</span>
       </div>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" role="list" aria-label="Tecnologías principales">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5" role="list" aria-label={language === 'en' ? 'Core technologies' : 'Tecnologías principales'}>
         {technologies.map((technology, index) => (
           <div
             key={technology.name}

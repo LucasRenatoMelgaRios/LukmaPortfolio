@@ -12,6 +12,13 @@ const links = [
     <div class="hidden items-center gap-6 md:flex">
       {links.map(([label, href]) => <a class="nav-link focus-ring text-sm font-semibold" href={href}>{label}</a>)}
     </div>
-    <a href="mailto:lucasmelgar123@gmail.com" class="focus-ring rough-border bg-ink px-4 py-2 text-sm font-bold text-white transition hover:bg-coral">Hablemos <span aria-hidden="true">↗</span></a>
+    <div class="flex items-center gap-2 sm:gap-3">
+      <div class="language-switch flex items-center rounded-full border border-ink/25 bg-white/80 p-0.5 text-[11px] font-black" role="group" aria-label="Cambiar idioma">
+        <button class="focus-ring language-option rounded-full px-2 py-1" type="button" data-language-option="es" aria-pressed="true" aria-label="Ver sitio en español">ES</button>
+        <button class="focus-ring language-option rounded-full px-2 py-1" type="button" data-language-option="en" aria-pressed="false" aria-label="View site in English">EN</button>
+      </div>
+      <a href="mailto:lucasmelgar123@gmail.com" class="focus-ring rough-border bg-ink px-3 py-2 text-xs font-bold text-white transition hover:bg-coral sm:px-4 sm:text-sm">Hablemos <span aria-hidden="true">↗</span></a>
+    </div>
   </nav>
+  <span id="language-status" class="sr-only" aria-live="polite"></span>
 </header>

@@ -32,11 +32,19 @@ const levelClasses = [
 ];
 
 export default function GitHubActivity() {
+  const [language, setLanguage] = useState<'es' | 'en'>('es');
   const [year, setYear] = useState(currentYear);
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [tooltip, setTooltip] = useState<TooltipState | null>(null);
+
+  useEffect(() => {
+    const syncLanguage = () => setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
+    syncLanguage();
+    window.addEventListener('portfolio-language-change', syncLanguage);
+    return () => window.removeEventListener('portfolio-language-change', syncLanguage);
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -82,7 +90,7 @@ export default function GitHubActivity() {
   };
 
   const tooltipDate = tooltip
-    ? new Date(`${tooltip.contribution.date}T00:00:00Z`).toLocaleDateString('es-PE', {
+    ? new Date(`${tooltip.contribution.date}T00:00:00Z`).toLocaleDateString(language === 'en' ? 'en-US' : 'es-PE', {
         day: '2-digit',
         month: 'short',
         year: 'numeric',
@@ -92,7 +100,7 @@ export default function GitHubActivity() {
 
   return (
     <div className="mt-8">
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Seleccionar año de actividad">
+      <div className="flex flex-wrap gap-2" role="group" aria-label={language === 'en' ? 'Select activity year' : 'Seleccionar año de actividad'}>
         {years.map((availableYear) => (
           <button
             key={availableYear}
@@ -113,17 +121,17 @@ export default function GitHubActivity() {
       <div className="mt-7 grid gap-5 lg:grid-cols-[230px_1fr]">
         <article className="paper-card rough-border flex min-h-40 flex-col justify-between p-6">
           <div className="flex items-start justify-between gap-4">
-            <p className="text-sm font-bold text-ink-soft">Contribuciones en {year}</p>
+            <p className="text-sm font-bold text-ink-soft">{language === 'en' ? 'Contributions in' : 'Contribuciones en'} {year}</p>
             <Code2 className="size-5" aria-hidden="true" />
           </div>
           <p className="display mt-6 text-5xl" aria-live="polite">
-            {loading ? '···' : error ? '—' : total.toLocaleString('es-PE')}
+            {loading ? '···' : error ? '—' : total.toLocaleString(language === 'en' ? 'en-US' : 'es-PE')}
           </p>
         </article>
 
         <article className="paper-card rough-border min-w-0 p-5 md:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h3 className="font-bold">Actividad pública · {year}</h3>
+            <h3 className="font-bold">{language === 'en' ? 'Public activity' : 'Actividad pública'} · {year}</h3>
             <a
               href={profileUrl}
               target="_blank"
@@ -136,15 +144,15 @@ export default function GitHubActivity() {
 
           {error ? (
             <div className="mt-7 rounded-xl border-2 border-dashed border-coral/50 bg-coral/5 p-6">
-              <p className="font-bold">La actividad no pudo cargarse ahora.</p>
-              <p className="mt-2 text-sm text-ink-soft">Puedes consultar las contribuciones directamente en mi perfil de GitHub.</p>
+              <p className="font-bold">{language === 'en' ? 'Activity could not be loaded right now.' : 'La actividad no pudo cargarse ahora.'}</p>
+              <p className="mt-2 text-sm text-ink-soft">{language === 'en' ? 'You can view the contributions directly on my GitHub profile.' : 'Puedes consultar las contribuciones directamente en mi perfil de GitHub.'}</p>
             </div>
           ) : (
             <div className="mt-7 overflow-x-auto pb-3" aria-busy={loading}>
               <div className="mb-2 flex min-w-[730px] justify-between px-1 text-[10px] font-bold uppercase tracking-widest text-ink-soft/70" aria-hidden="true">
-                {['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'].map((month) => <span key={month}>{month}</span>)}
+                {(language === 'en' ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] : ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']).map((month) => <span key={month}>{month}</span>)}
               </div>
-              <div className="grid min-w-[730px] grid-flow-col grid-rows-7 gap-[3px]" aria-label={`Calendario de contribuciones de ${year}`}>
+              <div className="grid min-w-[730px] grid-flow-col grid-rows-7 gap-[3px]" aria-label={language === 'en' ? `Contribution calendar for ${year}` : `Calendario de contribuciones de ${year}`}>
                 {Array.from({ length: leadingEmptyDays }).map((_, index) => (
                   <span key={`empty-${index}`} className="size-[11px]" aria-hidden="true" />
                 ))}
@@ -152,8 +160,8 @@ export default function GitHubActivity() {
                   <span
                     key={contribution.date || index}
                     className={`size-[11px] cursor-crosshair rounded-[2px] border border-ink/[0.05] transition-transform hover:relative hover:z-10 hover:scale-150 hover:border-ink/30 ${levelClasses[Math.min(contribution.level, 4)]}`}
-                    title={contribution.date ? `${contribution.date}: ${contribution.count} contribuciones` : undefined}
-                    aria-label={contribution.date ? `${contribution.date}: ${contribution.count} contribuciones` : undefined}
+                    title={contribution.date ? `${contribution.date}: ${contribution.count} ${language === 'en' ? (contribution.count === 1 ? 'contribution' : 'contributions') : (contribution.count === 1 ? 'contribución' : 'contribuciones')}` : undefined}
+                    aria-label={contribution.date ? `${contribution.date}: ${contribution.count} ${language === 'en' ? (contribution.count === 1 ? 'contribution' : 'contributions') : (contribution.count === 1 ? 'contribución' : 'contribuciones')}` : undefined}
                     onPointerEnter={(event) => contribution.date && showTooltip(contribution, event.currentTarget)}
                     onPointerLeave={() => setTooltip(null)}
                   />
@@ -163,11 +171,11 @@ export default function GitHubActivity() {
           )}
 
           <div className="mt-3 flex flex-wrap items-center justify-between gap-4 border-t border-dashed border-ink/20 pt-4 text-xs text-ink-soft">
-            <span>Datos públicos de GitHub</span>
-            <div className="flex items-center gap-2" aria-label="Intensidad de contribuciones">
-              <span>Menos</span>
+            <span>{language === 'en' ? 'Public GitHub data' : 'Datos públicos de GitHub'}</span>
+            <div className="flex items-center gap-2" aria-label={language === 'en' ? 'Contribution intensity' : 'Intensidad de contribuciones'}>
+              <span>{language === 'en' ? 'Less' : 'Menos'}</span>
               {levelClasses.map((levelClass) => <i key={levelClass} className={`size-3 rounded-[2px] ${levelClass}`} />)}
-              <span>Más</span>
+              <span>{language === 'en' ? 'More' : 'Más'}</span>
             </div>
           </div>
         </article>
@@ -180,7 +188,9 @@ export default function GitHubActivity() {
           style={{ left: tooltip.x, top: tooltip.y }}
         >
           <strong className="text-coral">{tooltip.contribution.count}</strong>{' '}
-          {tooltip.contribution.count === 1 ? 'contribución' : 'contribuciones'} · {tooltipDate}
+          {language === 'en'
+            ? (tooltip.contribution.count === 1 ? 'contribution' : 'contributions')
+            : (tooltip.contribution.count === 1 ? 'contribución' : 'contribuciones')} · {tooltipDate}
         </div>,
         document.body,
       )}

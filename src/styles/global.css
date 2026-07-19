@@ -72,6 +72,10 @@ body {
 .nav-link::after { content:""; position:absolute; left:0; right:100%; bottom:-4px; height:2px; background:var(--color-coral); transition:right .25s ease; }
 .nav-link:hover::after { right:0; }
 
+.language-option { color: var(--color-ink-soft); transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+.language-option:hover { color: var(--color-ink); }
+.language-option[aria-pressed="true"] { background: var(--color-ink); color: white; transform: rotate(-2deg); }
+
 .postit { background: #eff6ad; box-shadow: 4px 5px 0 rgba(23,63,95,.12); transform: rotate(2deg); }
 .dot-grid { background-image: radial-gradient(rgba(23,63,95,.17) 1px, transparent 1px); background-size: 14px 14px; }
 

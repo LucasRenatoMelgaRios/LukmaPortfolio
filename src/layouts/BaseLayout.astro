@@ -22,6 +22,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
+    <script is:inline>
+      try {
+        const savedLanguage = localStorage.getItem('lucas-portfolio-language');
+        if (savedLanguage === 'en') {
+          document.documentElement.lang = 'en';
+          document.documentElement.dataset.language = 'en';
+        }
+      } catch {}
+    </script>
   </head>
   <body>
     <a href="#contenido" class="focus-ring fixed left-4 top-4 z-[100] -translate-y-24 bg-ink px-4 py-2 text-white transition-transform focus:translate-y-0">Saltar al contenido</a>
@@ -31,6 +40,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add('is-visible'));
       }, { threshold: 0.12 });
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+    <script>
+      import '../scripts/language-switch';
     </script>
   </body>
 </html>
